@@ -6,6 +6,7 @@ import { SnackbarProvider } from 'notistack';
 import App from './App.jsx';
 import theme from './theme.js';
 import { AuthProvider } from './context/AuthContext.jsx';
+import { ClientesProvider } from './context/ClientesContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,9 +14,11 @@ createRoot(document.getElementById('root')).render(
       <CssBaseline />
       <SnackbarProvider maxSnack={4} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
         <AuthProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <ClientesProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ClientesProvider>
         </AuthProvider>
       </SnackbarProvider>
     </ThemeProvider>
