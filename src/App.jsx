@@ -1,15 +1,13 @@
 import React from 'react';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
-
 import ProtectedRoute from './auth/ProtectedRoute.jsx';
 import AppNavbar from './layout/AppNavbar.jsx';
 
 import Login from './pages/Login/Login.jsx';
 import Inicio from './pages/Inicio/Inicio.jsx';
-
-//  Nuevas Paginas:
 import ClientesList from './pages/Clientes/ClientesList.jsx';
 import ClienteDetail from './pages/Clientes/ClienteDetail.jsx';
+import MascotasList from './pages/Mascotas/MascotasList.jsx';
 
 export default function App() {
   return (
@@ -21,11 +19,7 @@ export default function App() {
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/clientes" element={<ClientesList />} />
           <Route path="/clientes/:id" element={<ClienteDetail />} />
-
-
-          {/* Mascotas: por ahora placeholder simple hasta crear la página */}
-
-          <Route path="/mascotas" element={<div style={{ padding: 16 }}>Mascotas (pronto)</div>} />
+          <Route path="/mascotas" element={<MascotasList />} />
         </Route>
       </Route>
 
