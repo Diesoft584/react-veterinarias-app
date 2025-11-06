@@ -35,9 +35,7 @@ export default function Login() {
                         borderRadius: 3,
                         backgroundImage: `
               linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15)),
-              url('https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1200&q=80'),
-              url('https://picsum.photos/1200/800')
-            `,
+              url('https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1200&q=80') `,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                     }}

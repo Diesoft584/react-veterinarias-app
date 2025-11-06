@@ -1,3 +1,4 @@
+// src/hooks/useClienteDetail.js
 import { useCallback, useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { GetClienteById } from "../services/clientes/GetClienteById";
@@ -26,9 +27,36 @@ export function useClienteDetail(id) {
 
   const createMascota = useCallback(
     async (body) => {
+      // Normalización estricta
+      const payload = {
+        nombre: (body?.nombre || "").trim(),
+        especie: (body?.especie || "").trim(),
+        cliente_id: String(id),
+      };
+      const raza = (body?.raza || "").trim();
+      if (raza) payload.raza = raza;
+
+      if (
+        body?.edad !== "" &&
+        body?.edad !== null &&
+        body?.edad !== undefined
+      ) {
+        const n = Number(body.edad);
+        if (!Number.isNaN(n)) payload.edad = n;
+      }
+
+      if (!payload.nombre || !payload.especie || !payload.cliente_id) {
+        throw new Error(
+          "Faltan campos obligatorios (nombre, especie, cliente_id)."
+        );
+      }
+
+      // Log para inspección rápida en consola si hace falta
+      // console.log("POST /mascotas payload:", payload);
+
       try {
-        const created = await CreateMascota({ ...body, cliente_id: id });
-        setMascotas((prev) => [...prev, created]);
+        const created = await CreateMascota(payload);
+        setMascotas((prev) => [created, ...(prev || [])]);
         enqueueSnackbar("Mascota creada", { variant: "success" });
         return created;
       } catch (e) {

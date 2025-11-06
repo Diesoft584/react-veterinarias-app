@@ -1,4 +1,3 @@
-// src/pages/Mascotas/MascotasList.jsx
 import React from "react";
 import {
     Box,
@@ -13,29 +12,43 @@ import {
 import { useMascotas } from "../../hooks/useMascotas";
 import MascotaCard from "./components/MascotaCard.jsx";
 
-function ownerLabel(owner) {
-    if (!owner) return "-";
-    if (typeof owner === "string") return owner;
-    if (typeof owner === "object") return owner.nombre || owner.email || owner._id || "-";
-    return "-";
+
+// Normaliza nombre y email del dueño o cae a “Adopción disponible”
+function ownerInfo(owner) {
+
+    if (!owner) {
+        return {
+            name: "Adopción disponible",
+            email: "veterinariaanimalis@gmail.com",
+        };
+    }
+
+    if (typeof owner === "string") {
+        return { name: owner, email: "veterinariaanimalis@gmail.com" };
+    }
+
+    return {
+        name: owner.nombre || owner._id || "Adopción disponible",
+        email: owner.email || "veterinariaanimalis@gmail.com",
+    };
 }
 
 export default function MascotasList() {
     const { mascotas, loading, load } = useMascotas();
     const [selected, setSelected] = React.useState(null);
 
-    React.useEffect(() => { load(); }, [load]);
+    React.useEffect(() => {
+        load();
+    }, [load]);
 
     return (
         <>
             <Box
                 sx={{
-                    height: 120,
+                    height: 200,
                     backgroundImage: `
             linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-            url('https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=1600&auto=format&fit=crop'),
-            url('https://fastly.picsum.photos/id/137/1600/900.jpg?hmac=gTmmJwvLZBR919npzJ_vjLLCisGyR5A0jkCtAb37bQ4')
-          `,
+            url('/src/assets/banner-mascotas.jpg')`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
@@ -68,19 +81,22 @@ export default function MascotasList() {
                 )}
             </Container>
 
-            {/* Detalle simple */}
             <Dialog open={!!selected} onClose={() => setSelected(null)} maxWidth="sm" fullWidth>
                 <DialogTitle>Detalles de la Mascota</DialogTitle>
                 <DialogContent dividers>
-                    {selected && (
-                        <Box sx={{ display: "grid", gap: 1 }}>
-                            <Typography><b>Nombre:</b> {selected.nombre}</Typography>
-                            <Typography><b>Especie:</b> {selected.especie}</Typography>
-                            <Typography><b>Raza:</b> {selected.raza || "-"}</Typography>
-                            <Typography><b>Edad:</b> {selected.edad ?? "-"}</Typography>
-                            <Typography><b>Dueño (cliente_id):</b> {ownerLabel(selected?.cliente_id)}</Typography>
-                        </Box>
-                    )}
+                    {selected && (() => {
+                        const owner = ownerInfo(selected.cliente_id);
+                        return (
+                            <Box sx={{ display: "grid", gap: 1 }}>
+                                <Typography><b>Nombre:</b> {selected.nombre}</Typography>
+                                <Typography><b>Especie:</b> {selected.especie}</Typography>
+                                <Typography><b>Raza:</b> {selected.raza || "-"}</Typography>
+                                <Typography><b>Edad:</b> {selected.edad ?? "-"}</Typography>
+                                <Typography><b>Dueño:</b> {owner.name}</Typography>
+                                <Typography><b>Email:</b> {owner.email}</Typography>
+                            </Box>
+                        );
+                    })()}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setSelected(null)}>Cerrar</Button>

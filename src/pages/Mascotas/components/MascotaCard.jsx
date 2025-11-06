@@ -1,14 +1,17 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography, Stack } from "@mui/material";
+import PetCardImg from "../../../assets/pet-card.jpg";
 
 function imageFor({ especie = "" }) {
     const e = (especie || "").toLowerCase();
-    if (e.includes("gato")) {
-        return "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80";
-    }
-    return "https://images.unsplash.com/photo-1507149833265-60c372daea22?auto=format&fit=crop&w=800&q=80";
-}
 
+    if (e.includes("gato") || e.includes("perro")) {
+        return PetCardImg;
+    }
+
+
+    return PetCardImg;
+}
 function ownerLabel(owner) {
     if (!owner) return "-";
     if (typeof owner === "string") return owner;

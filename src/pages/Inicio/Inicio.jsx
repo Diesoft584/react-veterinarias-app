@@ -28,7 +28,7 @@ export default function Inicio() {
             {/* Header con imagen estable */}
             <Box
                 sx={{
-                    height: 140,
+                    height: 200,
                     backgroundImage: `
             linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
             url('https://images.unsplash.com/photo-1525253013412-55c1a69a5738?auto=format&fit=crop&w=1600&q=80')
@@ -56,13 +56,15 @@ export default function Inicio() {
                             "Adopción",
                             "Detalles y modificación",
                             "Creación y eliminación",
+                            "Pendientes: Eliminar mascota asociada y adopción(huérfano)*"
+
                         ]}
                     />
                     <CardAcceso
                         title="Gestión de Mascotas"
                         icon="🐾"
                         to="/mascotas"
-                        items={["Listado general", "Detalles", "Fotografías", "Creación y eliminación*"]}
+                        items={["Listado general", "Detalles", "Fotografías(Demo)", "Pendientes: Creación,eliminación y subir imagen*"]}
                     />
                 </Box>
             </Container>

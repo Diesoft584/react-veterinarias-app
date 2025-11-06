@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardActions, Typography, Button, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-export default function ClienteCard({ cliente, onDelete }) {
+export default function ClienteCard({ cliente, onEdit, onDelete }) {
     const nav = useNavigate();
 
     return (
@@ -23,8 +23,10 @@ export default function ClienteCard({ cliente, onDelete }) {
                     </Typography>
                 </Stack>
             </CardContent>
+
             <CardActions sx={{ justifyContent: 'flex-end' }}>
                 <Button size="small" onClick={() => nav(`/clientes/${cliente._id}`)}>Ver</Button>
+                <Button size="small" onClick={() => onEdit?.(cliente)}>Editar</Button>
                 <Button size="small" color="error" onClick={() => onDelete?.(cliente)}>Borrar</Button>
             </CardActions>
         </Card>
