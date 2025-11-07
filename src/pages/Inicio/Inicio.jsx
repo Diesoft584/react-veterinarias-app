@@ -25,7 +25,7 @@ const CardAcceso = ({ title, items, to, icon }) => (
 export default function Inicio() {
     return (
         <>
-            {/* Header con imagen estable */}
+
             <Box
                 sx={{
                     height: 200,
@@ -39,7 +39,7 @@ export default function Inicio() {
             />
 
             <Container maxWidth="lg" sx={{ py: 4 }}>
-                {/*  CSS Grid en lugar de MUI Grid para evitar warnings */}
+
                 <Box
                     sx={{
                         display: "grid",

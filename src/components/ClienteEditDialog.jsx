@@ -24,7 +24,7 @@ export default function ClienteEditDialog({ open, onClose, cliente, onSave }) {
 
     const submit = (e) => {
         e.preventDefault();
-        onSave?.(form); // delega al padre
+        onSave?.(form);
     };
 
     return (

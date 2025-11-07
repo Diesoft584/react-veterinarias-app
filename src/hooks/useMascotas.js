@@ -1,4 +1,3 @@
-// src/hooks/useMascotas.js
 import { useCallback, useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { GetMascotas } from "../services/mascotas/GetMascotas";
@@ -9,7 +8,6 @@ export function useMascotas() {
   const [mascotas, setMascotas] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // load({ clienteId }) => mapea a { cliente_id }
   const load = useCallback(
     async (opts = {}) => {
       try {

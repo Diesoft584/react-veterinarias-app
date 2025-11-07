@@ -1,4 +1,3 @@
-// src/pages/Clientes/ClienteDetail.jsx
 import React, { useState } from "react";
 import {
     Box,
@@ -82,7 +81,7 @@ export default function ClienteDetail() {
                         gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
                     }}
                 >
-                    {/* Datos del cliente + lista de mascotas */}
+
                     <Paper sx={{ p: 2, borderRadius: 2 }}>
                         <Typography variant="subtitle1" fontWeight={800} gutterBottom>
                             {cliente?.nombre}
@@ -123,7 +122,7 @@ export default function ClienteDetail() {
                         </Box>
                     </Paper>
 
-                    {/* Formulario: agregar mascota */}
+
                     <Paper component="form" onSubmit={submit} sx={{ p: 2, borderRadius: 2 }}>
                         <Typography variant="subtitle1" fontWeight={800} gutterBottom>
                             Asociar nueva mascota
@@ -137,7 +136,7 @@ export default function ClienteDetail() {
                                 required
                             />
 
-                            {/* Select de especie (enum del backend) */}
+
                             <TextField
                                 label="Especie"
                                 name="especie"

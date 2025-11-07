@@ -43,7 +43,7 @@ export function ClientesProvider({ children }) {
         clientes: state.list,
         loading: state.loading,
         error: state.error,
-        _dispatch: dispatch, // lo usan los hooks
+        _dispatch: dispatch,
         TYPES,
     };
 

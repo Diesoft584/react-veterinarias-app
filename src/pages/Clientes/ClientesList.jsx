@@ -60,7 +60,7 @@ export default function ClientesList() {
                 </Typography>
 
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '2fr 1fr' }, gap: 3 }}>
-                    {/* Izquierda: buscador + grilla */}
+
                     <Box>
                         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
                             <TextField
@@ -104,12 +104,12 @@ export default function ClientesList() {
                         )}
                     </Box>
 
-                    {/* Derecha: alta */}
+
                     <ClienteForm onCreate={create} />
                 </Box>
             </Container>
 
-            {/* Editar */}
+
             <ClienteEditDialog
                 open={!!editing}
                 onClose={() => setEditing(null)}
@@ -117,7 +117,7 @@ export default function ClientesList() {
                 onSave={handleSaveEdit}
             />
 
-            {/* Confirmar borrado */}
+
             <Dialog open={!!toDelete} onClose={() => setToDelete(null)} maxWidth="xs" fullWidth>
                 <DialogTitle>Eliminar cliente</DialogTitle>
                 <DialogContent dividers>

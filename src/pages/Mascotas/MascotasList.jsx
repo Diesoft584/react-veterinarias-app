@@ -13,7 +13,7 @@ import { useMascotas } from "../../hooks/useMascotas";
 import MascotaCard from "./components/MascotaCard.jsx";
 
 
-// Normaliza nombre y email del dueño o cae a “Adopción disponible”
+
 function ownerInfo(owner) {
 
     if (!owner) {

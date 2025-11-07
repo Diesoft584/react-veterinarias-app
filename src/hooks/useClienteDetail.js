@@ -1,4 +1,3 @@
-// src/hooks/useClienteDetail.js
 import { useCallback, useEffect, useState } from "react";
 import { useSnackbar } from "notistack";
 import { GetClienteById } from "../services/clientes/GetClienteById";
@@ -27,7 +26,6 @@ export function useClienteDetail(id) {
 
   const createMascota = useCallback(
     async (body) => {
-      // Normalización estricta
       const payload = {
         nombre: (body?.nombre || "").trim(),
         especie: (body?.especie || "").trim(),
@@ -50,9 +48,6 @@ export function useClienteDetail(id) {
           "Faltan campos obligatorios (nombre, especie, cliente_id)."
         );
       }
-
-      // Log para inspección rápida en consola si hace falta
-      // console.log("POST /mascotas payload:", payload);
 
       try {
         const created = await CreateMascota(payload);

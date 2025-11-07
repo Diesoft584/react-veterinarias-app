@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
         <Container maxWidth="lg" sx={{ py: 6 }}>
-            {/* Reemplazo de Grid por CSS Grid para evitar warnings */}
+
             <Box
                 sx={{
                     display: "grid",
@@ -28,7 +28,7 @@ export default function Login() {
                     alignItems: "stretch",
                 }}
             >
-                {/* Columna izquierda: imagen */}
+
                 <Paper
                     sx={{
                         height: 420,
@@ -41,7 +41,7 @@ export default function Login() {
                     }}
                 />
 
-                {/* Columna derecha: formulario */}
+
                 <Paper component="form" onSubmit={submit} sx={{ p: 4, borderRadius: 3 }}>
                     <Typography variant="h6" align="center" fontWeight={800} gutterBottom>
                         INICIO DE SESIÓN
