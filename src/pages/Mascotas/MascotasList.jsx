@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useMascotas } from "../../hooks/useMascotas";
 import MascotaCard from "./components/MascotaCard.jsx";
-
+import bannerMascotas from "../../assets/banner-mascotas.jpg";
 
 
 function ownerInfo(owner) {
@@ -48,7 +48,7 @@ export default function MascotasList() {
                     height: 200,
                     backgroundImage: `
             linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-            url('/src/assets/banner-mascotas.jpg')`,
+            url(${bannerMascotas})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
